@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আপনার জন্য আমার চিঠি</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+        .header {
+            background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+            color: white;
+            padding: 30px 20px;
+            position: relative;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        .header .wa-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 32px;
+            opacity: 0.8;
+        }
+        .content {
+            padding: 30px;
+        }
+        .message-box {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 5px solid #128C7E;
+            text-align: center;
+        }
+        .message-box p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .heart {
+            color: #e91e63;
+            font-size: 24px;
+            margin: 0 5px;
+        }
+        .instructions {
+            background-color: #e9f7ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .instructions h3 {
+            color: #128C7E;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .instructions ol {
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .footer {
+            padding: 20px;
+            color: #6c757d;
+            font-size: 14px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+        .counter {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #6c757d;
+            font-weight: bold;
+        }
+        .important-note {
+            background-color: #fff3cd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 5px solid #ffc107;
+            text-align: left;
+        }
+        .important-note h3 {
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .consent-form {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .consent-form h3 {
+            color: #128C7E;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .checkbox-group {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .checkbox-group input {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .flower-decoration {
+            font-size: 20px;
+            color: #e91e63;
+            margin: 0 2px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f0f;
+            opacity: 0.7;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>WhatsApp বার্তা শেয়ার</h1>
+            <p>আপনার সাথে আমার অনুভূতি</p>
+            <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
+        </div>
+        
+        <div class="content">
+            <div class="message-box">
+                <p><span class="heart">❤</span> প্রিয় বন্ধু, আপনি কি সত্যিই জানতে চান আমার মনে কি চলছে? <span class="heart">❤</span></p>
+            </div>
+            
+            <div class="consent-form">
+                <h3>অনুমতি ফরম</h3>
+                <p>নিচের শর্তগুলো পড়ে টিক চিহ্ন দিন:</p>
+                
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="consentCheckbox"> 
+                        আমি এই বার্তাটি পড়ার জন্য সম্মত
+                    </label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="termsCheckbox"> 
+                        আমি আমার বন্ধুর সাথে এই বার্তা শেয়ার করতে চাই
+                    </label>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <h3>কিভাবে কাজ করে:</h3>
+                <ol>
+                    <li>উপরে দুটি বক্সে টিক চিহ্ন দিন</li>
+                    <li>"বার্তা দেখুন" বাটনে ক্লিক করুন</li>
+                    <li>আপনার WhatsApp অ্যাপে একটি প্রি-ফিল্ড মেসেজ খুলবে</li>
+                    <li>আপনি চাইলে এটি আপনার বন্ধুর সাথে শেয়ার করতে পারেন</li>
+                </ol>
+            </div>
+            
+            <button id="shareBtn" class="btn" disabled>বার্তা দেখুন <i class="flower-decoration">✿</i></button>
+            
+            <div id="successMessage" class="success-message">
+                <p><i class="fas fa-check-circle"></i> ধন্যবাদ! আপনার বার্তা প্রস্তুত। এটি এখন শেয়ার করুন।</p>
+            </div>
+            
+            <div class="counter">
+                <p><span id="clickCount">0</span> জন এই বার্তা শেয়ার করেছেন</p>
+            </div>
+            
+            <div class="important-note">
+                <h3>গুরুত্বপূর্ণ নোট:</h3>
+                <p>এই ওয়েবসাইটটি শুধুমাত্র ভালোবাসার বার্তা শেয়ার করার জন্য তৈরি করা হয়েছে। কোনো ব্যক্তিগত তথ্য সংগ্রহ করা হয় না।</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>সম্পূর্ণ নিরাপদ এবং গোপনীয়তা সম্মত</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const consentCheckbox = document.getElementById('consentCheckbox');
+            const termsCheckbox = document.getElementById('termsCheckbox');
+            const shareBtn = document.getElementById('shareBtn');
+            const clickCountElement = document.getElementById('clickCount');
+            const successMessage = document.getElementById('successMessage');
+            let clickCount = 0;
+            
+            // WhatsApp শেয়ার লিঙ্ক
+            const message = encodeURIComponent("❤️ আপনার জন্য একটি বিশেষ বার্তা আছে! জীবন সুন্দর, ভালোবাসা ছড়িয়ে দিন! 💌");
+            const whatsappURL = `https://wa.me/?text=${message}`;
+            
+            // অনুমতি checkbox পরিবর্তন শনাক্ত করুন
+            function updateShareButton() {
+                if(consentCheckbox.checked && termsCheckbox.checked) {
+                    shareBtn.disabled = false;
+                    shareBtn.style.opacity = "1";
+                    shareBtn.style.cursor = "pointer";
+                } else {
+                    shareBtn.disabled = true;
+                    shareBtn.style.opacity = "0.7";
+                    shareBtn.style.cursor = "not-allowed";
+                }
+            }
+            
+            consentCheckbox.addEventListener('change', updateShareButton);
+            termsCheckbox.addEventListener('change', updateShareButton);
+            
+            shareBtn.addEventListener('click', function() {
+                if(!consentCheckbox.checked || !termsCheckbox.checked) {
+                    alert("দয়া করে প্রথমে সবগুলো অনুমতি checkbox টি চেক করুন");
+                    return;
+                }
+                
+                clickCount++;
+                clickCountElement.textContent = clickCount;
+                
+                // সাফল্য বার্তা দেখান
+                successMessage.style.display = 'block';
+                
+                // WhatsApp ওপেন করুন
+                setTimeout(function() {
+                    window.open(whatsappURL, '_blank');
+                }, 1000);
+                
+                // Create some simple confetti effect
+                createConfetti();
+            });
+            
+            function createConfetti() {
+                const confettiCount = 30;
+                const container = document.querySelector('.container');
+                
+                for (let i = 0; i < confettiCount; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.backgroundColor = getRandomColor();
+                    confetti.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+                    container.appendChild(confetti);
+                    
+                    // Animate confetti
+                    const animationDuration = Math.random() * 3000 + 2000;
+                    confetti.animate([
+                        { top: '-10px', transform: 'rotate(0deg)' },
+                        { top: '100%', transform: `rotate(${Math.random() * 360}deg)` }
+                    ], {
+                        duration: animationDuration,
+                        easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)',
+                        fill: 'forwards'
+                    });
+                    
+                    // Remove confetti after animation
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, animationDuration);
+                }
+            }
+            
+            function getRandomColor() {
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9c74f', '#e91e63', '#9c27b0'];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+        });
+    </script>
+</body>
+</html>
